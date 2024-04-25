@@ -8,7 +8,7 @@ namespace Assignment_1
         private static readonly string nameRegex = @"^[a-zA-Z]+$";
         private static readonly string phoneRegex = @"^(0|\+84)(\d{9})$";
 
-        public static List<Member> generateMembers()
+        public static List<Member> GenerateMembers()
         {
             var members = new List<Member>()
             {
@@ -60,16 +60,16 @@ namespace Assignment_1
             return members;
         }
 
-        public static void addMember(List<Member> members)
+        public static void AddMember(List<Member> members)
         {
-            string firstName = checkInputString("Enter First name: ", nameRegex);
-            string lastName = checkInputString("Enter Last name: ", nameRegex);
-            bool gender = checkInputBool("Enter Gender (1 for Male, 0 for Female): ");
-            DateOnly dob = checkInputDate("Enter DOB (dd-mm-yyyy): ");
-            string phoneNumber = checkInputString("Enter Phone Number: ", phoneRegex);
-            string birthPlace = checkInputString("Enter Birth Place: ", nameRegex);
-            int age = checkInputInt("Enter Age: ");
-            bool isGraduated = checkInputBool(
+            string firstName = CheckInputString("Enter First name: ", nameRegex);
+            string lastName = CheckInputString("Enter Last name: ", nameRegex);
+            bool gender = CheckInputBool("Enter Gender (1 for Male, 0 for Female): ");
+            DateOnly dob = CheckInputDate("Enter DOB (dd-mm-yyyy): ");
+            string phoneNumber = CheckInputString("Enter Phone Number: ", phoneRegex);
+            string birthPlace = CheckInputString("Enter Birth Place: ", nameRegex);
+            int age = CheckInputInt("Enter Age: ");
+            bool isGraduated = CheckInputBool(
                 "Enter graduation status (1 for graduated, 0 for ungraduated): "
             );
 
@@ -88,7 +88,7 @@ namespace Assignment_1
             members.Add(member);
         }
 
-        private static void displayListMember(List<Member> members)
+        private static void DisplayListMember(List<Member> members)
         {
             foreach (Member member in members)
             {
@@ -96,7 +96,7 @@ namespace Assignment_1
             }
         }
 
-        public static void findMales(List<Member> members)
+        public static void FindMales(List<Member> members)
         {
             var males = new List<Member>();
             foreach (Member member in members)
@@ -108,10 +108,10 @@ namespace Assignment_1
             }
 
             Console.WriteLine("\nList of males: ");
-            displayListMember(males);
+            DisplayListMember(males);
         }
 
-        public static void findOldest(List<Member> members)
+        public static void FindOldestMember(List<Member> members)
         {
             var oldest = members[0];
             foreach (Member member in members)
@@ -123,7 +123,7 @@ namespace Assignment_1
             Console.WriteLine($"The oldest one is: {oldest}");
         }
 
-        public static void listFullNameOnly(List<Member> members)
+        public static void ListFullNameOnly(List<Member> members)
         {
             foreach (Member member in members)
             {
@@ -131,7 +131,7 @@ namespace Assignment_1
             }
         }
 
-        public static void listMemSurroundingYear(List<Member> members, int year)
+        public static void ListMemSurroundingYear(List<Member> members, int year)
         {
             var beforeYear = new List<Member>();
             var inYear = new List<Member>();
@@ -152,15 +152,15 @@ namespace Assignment_1
                 }
             }
 
-            Console.WriteLine("\nMember who has birth year is 2000: ");
-            displayListMember(inYear);
-            Console.WriteLine("\nMember who has birth year before 2000: ");
-            displayListMember(beforeYear);
-            Console.WriteLine("\nMember who has birth year after 2000: ");
-            displayListMember(afterYear);
+            Console.WriteLine($"\nMember who has birth year in {year}: ");
+            DisplayListMember(inYear);
+            Console.WriteLine($"\nMember who has birth year before {year}: ");
+            DisplayListMember(beforeYear);
+            Console.WriteLine($"\nMember who has birth year after {year}: ");
+            DisplayListMember(afterYear);
         }
 
-        public static void findFirstBornInHaNoi(List<Member> members)
+        public static void FindFirstBornInHaNoi(List<Member> members)
         {
             foreach (Member member in members)
             {
@@ -172,7 +172,7 @@ namespace Assignment_1
             }
         }
 
-        private static string checkInputString(string prompt, string regex)
+        private static string CheckInputString(string prompt, string regex)
         {
             while (true)
             {
@@ -196,7 +196,7 @@ namespace Assignment_1
             }
         }
 
-        private static bool checkInputBool(string prompt)
+        private static bool CheckInputBool(string prompt)
         {
             while (true)
             {
@@ -214,7 +214,7 @@ namespace Assignment_1
             }
         }
 
-        private static DateOnly checkInputDate(string prompt)
+        private static DateOnly CheckInputDate(string prompt)
         {
             while (true)
             {
@@ -242,7 +242,7 @@ namespace Assignment_1
             }
         }
 
-        private static int checkInputInt(string prompt)
+        private static int CheckInputInt(string prompt)
         {
             while (true)
             {

@@ -1,18 +1,18 @@
 ﻿using Assignment_1;
 
-List<Member> members = MemberService.generateMembers();
+List<Member> members = MemberService.GenerateMembers();
 
 while (true)
 {
     // Display GUI
-    displayGUI();
+    DisplayGUI();
     // Choose option
-    sbyte choice = chooseOption();
+    sbyte choice = ChooseOption();
     // Perform
-    performChoice(choice);
+    PerformChoice(choice);
 }
 
-void displayGUI()
+void DisplayGUI()
 {
     Console.WriteLine("\n==== Member management =====");
     Console.WriteLine("0. Add new member");
@@ -25,7 +25,7 @@ void displayGUI()
     Console.WriteLine("7. Exit");
 }
 
-sbyte chooseOption()
+sbyte ChooseOption()
 {
     // Loop until input valid
     while (true)
@@ -42,10 +42,11 @@ sbyte chooseOption()
 
         try
         {
-            sbyte choice = SByte.Parse(input);
+            sbyte.TryParse(input, out sbyte choice);
             if (choice < 0 || choice > 7)
             {
                 Console.WriteLine("Choice must between 0 and 7");
+                continue;
             }
             return choice;
         }
@@ -56,31 +57,31 @@ sbyte chooseOption()
     }
 }
 
-void performChoice(sbyte choice)
+void PerformChoice(sbyte choice)
 {
     switch (choice)
     {
         case 0:
             // Add new member into list
-            MemberService.addMember(members);
+            MemberService.AddMember(members);
             break;
         case 1:
             // Find males on list
-            MemberService.findMales(members);
+            MemberService.FindMales(members);
             break;
         case 2:
             // Find the oldest one
-            MemberService.findOldest(members);
+            MemberService.FindOldestMember(members);
             break;
         case 3:
             // List full name
-            MemberService.listFullNameOnly(members);
+            MemberService.ListFullNameOnly(members);
             break;
         case 4:
-            MemberService.listMemSurroundingYear(members, 2000);
+            MemberService.ListMemSurroundingYear(members, 2000);
             break;
         case 5:
-            MemberService.findFirstBornInHaNoi(members);
+            MemberService.FindFirstBornInHaNoi(members);
             break;
         case 6:
             // Clear console
